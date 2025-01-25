@@ -1,0 +1,17 @@
+{
+    "title1": "EXPLORE",
+    "title2": "FURTHER",
+    "images": {
+    
+      "sky": "https://assets.codepen.io/721952/sky.jpg",
+      "mountBg": "https://assets.codepen.io/721952/mountBg.png",
+      "mountMg": "https://assets.codepen.io/721952/mountMg.png",
+      "cloud2": "https://assets.codepen.io/721952/cloud2.png",
+      "mountFg": "https://assets.codepen.io/721952/mountFg.png",
+      "cloud1": "https://assets.codepen.io/721952/cloud1.png",
+      "cloud3": "https://assets.codepen.io/721952/cloud3.png"
+    },
+ 
+    "animation": "parallaxScroll" 
+  }
+

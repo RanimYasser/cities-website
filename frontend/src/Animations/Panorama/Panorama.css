@@ -1,0 +1,27 @@
+.panorama-container {
+    width: 100%;
+    height: 80vh; 
+    overflow: hidden;
+    background-size: 120%; 
+    background-repeat: no-repeat;
+    background-position: 50% 50%; 
+    transition: background-position 0.8s cubic-bezier(0.15, 1, 1.5, 1); 
+    cursor: pointer;
+    position: relative; 
+  }
+  
+ 
+  .panorama-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 50%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  

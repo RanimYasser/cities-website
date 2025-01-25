@@ -1,0 +1,14 @@
+/* Panorama container */
+.panorama-container {
+    
+    width: 100%;
+    height: 80vh; /* Adjust height as needed */
+    overflow: hidden;
+    background-image: url("/images/panorama.jpg"); /* Path to your image */
+    background-size: 120%; /* Slightly zoomed-in image for smoother movement */
+    background-repeat: no-repeat;
+    background-position: 50% 50%; /* Default center position */
+    transition: background-position 0.8s cubic-bezier(0.15, 1, 1.5, 1); /* Smooth movement */
+    cursor: pointer;
+  }
+  
