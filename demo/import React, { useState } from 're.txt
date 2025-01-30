@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+import MobileDrawer from './MobileDrawer';
+
+const App = () => {
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const menuItems = ['Home', 'About', 'Services', 'Contact'];
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  return (
+    <>
+      <button onClick={toggleDrawer(true)}>Open Drawer</button>
+      <MobileDrawer
+        isOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        menuItems={menuItems}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+    </>
+  );
+};
+
+export default App;

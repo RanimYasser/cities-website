@@ -1,36 +1,39 @@
-// src/theme.js
-
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2', // Primary color (blue)
-      light: '#63a4ff', // Optional: Lighter shade
-      dark: '#004ba0', // Optional: Darker shade
-      contrastText: '#ffffff', // Text color on primary
+      main: "#042516", // Dark Green 2
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: '#dc004e', // Secondary color (pink)
-      light: '#ff5c8d', // Optional: Lighter shade
-      dark: '#9a0036', // Optional: Darker shade
-      contrastText: '#ffffff', // Text color on secondary
+      main: "#daaE6c", // Accent Gold
+      contrastText: "#042516", // Dark Green 1 for contrast
     },
-    error: {
-      main: '#f44336',
-    },
-    warning: {
-      main: '#ff9800',
-    },
-    info: {
-      main: '#2196f3',
-    },
-    success: {
-      main: '#4caf50',
+    text: {
+      primary: "#042516", // Dark Green 1
+      secondary: "#064127", // Dark Green 3
     },
     background: {
-      default: '#f5f5f5', // Background color
-      paper: '#ffffff', // Surface color
+      default: "#ffffff",
+      paper: "#f5f5f5",
+    },
+  },
+  typography: {
+    fontFamily: "Arial, sans-serif",
+    h1: {
+      fontSize: "48px",
+      fontWeight: "bold",
+      color: "#042516", // Dark Green 1
+    },
+    h2: {
+      fontSize: "36px",
+      fontWeight: "bold",
+      color: "#064127", // Dark Green 3
+    },
+    body1: {
+      fontSize: "16px",
+      color: "#063f25", // Dark Green 2
     },
   },
 });

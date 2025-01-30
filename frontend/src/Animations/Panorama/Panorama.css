@@ -1,27 +1,111 @@
 .panorama-container {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transition: background-position 0.8s cubic-bezier(0.15, 1, 1.5, 1);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panorama-content {
+  position: absolute;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2vh 4vw;
+  border-radius: 10px;
+  max-width: 60%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.panorama-title {
+  font-size: 3.5vh;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.panorama-description {
+  font-size: 2vh;
+  margin-bottom: 2vh;
+}
+
+.panorama-button {
+  display: inline-block;
+  background: #ffcc00;
+  color: black;
+  font-size: 2vh;
+  font-weight: bold;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ea.panorama-container {
     width: 100%;
-    height: 80vh; 
+    height: 80vh;
     overflow: hidden;
-    background-size: 120%; 
+    background-size: cover;  /* Ensure it covers the full width */
     background-repeat: no-repeat;
-    background-position: 50% 50%; 
-    transition: background-position 0.8s cubic-bezier(0.15, 1, 1.5, 1); 
+    background-position: 50% 50%;
+    transition: background-position 0.8s cubic-bezier(0.15, 1, 1.5, 1);
     cursor: pointer;
-    position: relative; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
- 
-  .panorama-text {
+  /* Overlay Text Box */
+  .panorama-overlay {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 2vh 4vw;
+    border-radius: 10px;
     max-width: 50%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: white;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
   }
   
+  /* Title */
+  .panorama-title {
+    font-size: 3.5vh;
+    font-weight: bold;
+    margin-bottom: 1vh;
+  }
+  
+  /* Description */
+  .panorama-description {
+    font-size: 2vh;
+    margin-bottom: 2vh;
+  }
+  
+  /* Button */
+  .panorama-button {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    font-size: 2vh;
+    font-weight: bold;
+    padding: 1vh 2vw;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .panorama-button:hover {
+    background: #ffaa00;
+  }
+  se-in-out;
+}
+
+.panorama-button:hover {
+  background: #ffaa00;
+}

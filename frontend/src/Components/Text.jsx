@@ -1,17 +1,23 @@
-import React from 'react';
-import { Typography } from '@mui/material';
+import React from "react";
+import { Typography, Box } from "@mui/material";
 
-const Text = ({ content, style }) => {
+const Text = ({ content, style = {} }) => {
   return (
-    <Typography
-      sx={{
-        color: style.color,
-        fontSize: style.fontSize,
-        fontWeight: style.fontWeight,
-      }}
-    >
-      {content}
-    </Typography>
+    <Box sx={{ textAlign: "center", padding: "2vh 0" }}>
+      {content.map((textItem, index) => (
+        <Typography
+          key={index}
+          sx={{
+            color: textItem.color || style.color || "#fff", 
+            fontSize: textItem.fontSize || style.fontSize || "1rem",
+            fontWeight: textItem.fontWeight || style.fontWeight || "normal",
+            marginBottom: textItem.marginBottom || "8px"
+          }}
+        >
+          {textItem.text}
+        </Typography>
+      ))}
+    </Box>
   );
 };
 

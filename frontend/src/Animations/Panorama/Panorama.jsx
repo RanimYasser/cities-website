@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Panorama.css";
 
-const Panorama = ({ image, text }) => {
+const Panorama = ({ image, title, description, button }) => {
   const [backgroundPosition, setBackgroundPosition] = useState("50% 50%");
 
   const handleMouseMove = (e) => {
     const { left, width } = e.currentTarget.getBoundingClientRect();
-    const mouseX = e.clientX - left; 
+    const mouseX = e.clientX - left;
     const xPercent = 45 + (mouseX / width) * 10;
     setBackgroundPosition(`${xPercent}% 50%`);
   };
@@ -25,7 +25,16 @@ const Panorama = ({ image, text }) => {
         backgroundPosition,
       }}
     >
-      {text && <div className="panorama-text">{text}</div>}
+      {/* Overlay Content */}
+      <div className="panorama-overlay">
+        <h1 className="panorama-title">{title}</h1>
+        <p className="panorama-description">{description}</p>
+        {button && (
+          <a href={button.link} className="panorama-button">
+            {button.text}
+          </a>
+        )}
+      </div>
     </div>
   );
 };

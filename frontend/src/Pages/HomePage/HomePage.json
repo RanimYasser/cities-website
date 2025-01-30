@@ -1,0 +1,142 @@
+{
+    "page": "home",
+    "sections": [
+      {
+        "type": "text+media",
+        "props": {
+          "media": {
+            "type": "video",
+            "src": "/Media/Videos/homePageHeroSection.mp4",
+            "alt": "Urban Planning Video",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "style": {
+              "height": "isMobile ? '100vh' : '90vh'"
+            }
+          },
+          "texts": [
+            {
+              "section": "main",
+              "type": "paragraph",
+              "content": "REVOLUTIONIZING URBAN PLANNING PROCESSES THROUGH GAMING ENGINES AND DIGITAL TWINS TECHNOLOGY",
+              "style": {
+                "fontSize": "isMobile ? '1.2rem' : '2.5rem'",
+                "fontWeight": "600",
+                "color": "theme.palette.primary.contrastText",
+                "marginBottom": "3vh",
+                "marginTop": "10vh",
+                "textAlign": "left",
+                "width": "isMobile ? '80vw' : '30vw'"
+              }
+            },
+            {
+              "section": "main",
+              "type": "button",
+              "content": "Learn More",
+              "link": "/learn-more",
+              "icon": "+",
+              "style": {
+                "color": "theme.palette.primary.contrastText",
+                "fontSize": "isMobile ? '1rem' : '1.5rem'",
+                "backgroundColor": "transparent",
+                "fontWeight": "bold",
+                "width": "auto",
+                "marginTop": "1vh",
+                "borderRadius": "0.5em"
+              },
+              "onHover": false
+            }
+          ],
+          "style": {
+            "height": "100vh",
+            "padding": "isMobile ? '3vh 5vw' : '5vh 3vw'",
+            "marginLeft": "3%",
+            "marginRight": "10%",
+            "gradientOverlay": {
+              "height": "100%",
+              "background": "linear-gradient(to top, theme.palette.primary.main, transparent)"
+            }
+          }
+        }
+      },
+      {
+        "type": "section",
+        "props": {
+          "backgroundImage": "url_to_background_image.jpg",
+          "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "padding": "4rem 2rem"
+          },
+          "subsections": [
+            {
+              "type": "text",
+              "props": {
+                "content": [
+                  {
+                    "title": "Our Services",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+                    "style": {
+                      "fontSize": "isMobile ? '1.2rem' : '2.5rem'",
+                      "titleColor": "theme.palette.primary.contrastText",
+                      "descColor": "theme.palette.primary.contrastText",
+                      "width": "isMobile ? '90vw' : '20vw'"
+                    }
+                  },
+                  {
+                    "title": "Why Digital Twins?",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet.",
+                    "style": {
+                      "fontSize": "isMobile ? '1.2rem' : '2.5rem'",
+                      "titleColor": "theme.palette.primary.contrastText",
+                      "descColor": "theme.palette.primary.contrastText",
+                      "width": "isMobile ? '90vw' : '20vw'",
+                      "marginLeft": "isMobile ? '0' : '32vw'"
+                    }
+                  }
+                ],
+                "style": {
+                  "width": "100%",
+                  "padding": "2rem"
+                }
+              }
+            },
+            {
+              "type": "animation",
+              "props": {
+                "animationName": "carousel",
+                "slides": [
+                  {
+                    "image": "/Media/Images/Envision.png",
+                    "title": "Envision",
+                    "subtitle": "Creating a vision for the future"
+                  },
+                  {
+                    "image": "/Media/Images/Flood.png",
+                    "title": "Flood",
+                    "subtitle": ""
+                  },
+                  {
+                    "image": "/Media/Images/Pathfinding.png",
+                    "title": "Pathfinding",
+                    "subtitle": ""
+                  },
+                  {
+                    "image": "/Media/Images/Railroad.png",
+                    "title": "Railway Station Platform",
+                    "subtitle": ""
+                  }
+                ],
+                "style": {
+                  "width": "100%"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

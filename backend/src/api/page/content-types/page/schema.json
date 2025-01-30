@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "version": {
-      "type": "integer"
-    },
     "jsonFile": {
       "type": "json"
     }

@@ -3,7 +3,7 @@ import AnimationRenderer from './AnimationRenderer';
 import Text from '../Components/Text';
 import Media from '../Components/Media';
 import MediaWithText from '../Components/MediaWithText';
-
+import Button from '../Components/Button';
 const Loader = ({ content }) => {
   const { type, props } = content;
 
@@ -16,6 +16,8 @@ const Loader = ({ content }) => {
       return <Media {...props} />;
     case 'text+media':
       return <MediaWithText {...props} />;
+    case 'button':
+      return <Button {...props} />;
     default:
       return <div>Unknown content type</div>;
   }
