@@ -1,0 +1,90 @@
+/* Concentric Circles Section */
+.concentric-circles-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start; /* Shift text towards left */
+    align-items: center;
+    background-color: #0c291b;
+    overflow: hidden;
+    padding-left: 10vw; /* Adjust text padding */
+}
+
+/* Background animation container */
+.concentric-circles-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -20vw; /* Move circles further left */
+    display: flex;
+    justify-content: flex-start; /* Align circles to the left */
+    align-items: center;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Animated circles */
+.concentric-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(4, 112, 19, 0.1);
+}
+
+/* Adjust circle sizes and positions */
+.concentric-circle:nth-child(1) {
+    width: 40vw;
+    height: 40vw;
+    left: -15vw; /* Move further left */
+}
+.concentric-circle:nth-child(2) {
+    width: 60vw;
+    height: 60vw;
+    left: -25vw; /* Move further left */
+}
+
+/* Centered Text Content */
+.concentric-circles-content {
+    position: relative;
+    text-align: left;
+    z-index: 2;
+    color: white;
+    max-width: 40vw; /* Reduce width to fit better */
+}
+
+/* Responsive Title */
+.concentric-title {
+    font-size: clamp(2rem, 5vw, 4rem); /* Adjust dynamically */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Subtitle */
+.concentric-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 500px;
+    margin-bottom: 1.5rem;
+}
+
+/* Button Styling */
+.concentric-button {
+    color: white;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-weight: bold;
+    background-color: transparent;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .concentric-circles-content {
+        max-width: 80vw; /* Full width for smaller screens */
+        text-align: center;
+    }
+    .concentric-circles-section {
+        padding-left: 5vw;
+        justify-content: center;
+    }
+}

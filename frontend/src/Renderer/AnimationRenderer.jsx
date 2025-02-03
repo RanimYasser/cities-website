@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from "react";
 const Carousel = lazy(() => import("../Animations/Carousel/Carousel"));
 const Panorama = lazy(() => import("../Animations/Panorama/Panorama"));
 const ParallaxSphere = lazy(() => import("../Animations/ParallaxSphere/ParallaxSphere"));
+const ConcentricCircles = lazy(() => import("../Animations/ConcentricCircles/ConcentricCircles"));
 const AnimationRenderer = ({ animationName, ...props }) => {
   let Component;
   switch (animationName.toLowerCase()) {
@@ -15,6 +16,13 @@ const AnimationRenderer = ({ animationName, ...props }) => {
       case "parallaxsphere":
         Component = ParallaxSphere;
         break;
+        case "animatedslides":
+          Component = AnimatedSlides;
+          break;
+          case "concentriccircles":
+            Component = ConcentricCircles;
+            break;
+   
     default:
       return <div>Animation "{animationName}" not found.</div>;
   }

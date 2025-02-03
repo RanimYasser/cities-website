@@ -5,7 +5,7 @@ import theme from "./theme";
 // Components
 import Navbar from "./Shared-components/Desktop/Navbar";
 import Footer from "./Shared-components/Footer";
-import Loader from "./Renderer/Loader"; // Dynamic Loader
+import Loader from "./Renderer/Loader"; 
 
 const App = () => {
   return (
@@ -170,7 +170,7 @@ const ResponsiveLayout = () => {
           ],
         },
       },
-
+  
       //  ** PARALLAX SPHERE**
       {
         "type": "animation",
@@ -197,6 +197,31 @@ const ResponsiveLayout = () => {
         },
       },
       
+      {
+        type: "animation",
+        props: {
+          animationName: "concentriccircles",
+          backgroundStyle: {
+            backgroundColor: theme.palette.primary.main, 
+          },
+          title: "TWIN FLOOD",
+          description:
+            "Flood risk mitigation through AI-driven simulations. Predict, analyze, and protect urban areas with real-time digital twin insights.",
+          button: {
+            text: "Learn More",
+            link: "/learn-more",
+            icon: "+",
+            style: {
+              color: "white",
+              fontSize: "1rem",
+              backgroundColor: "transparent",
+              fontWeight: "bold",
+             
+              transition: "all 0.3s ease-in-out",
+            },
+          },
+        },
+      },
 
       // **FOURTH SECTION: Panorama ANIMATION**
 
@@ -272,7 +297,8 @@ const ResponsiveLayout = () => {
       {pageData.sections.map((section, index) => (
         <Loader key={index} content={section} />
       ))}
-      <Footer />
+   
+     <Footer />
     </>
   );
 };
