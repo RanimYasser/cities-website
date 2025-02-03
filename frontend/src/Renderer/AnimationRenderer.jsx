@@ -1,34 +1,29 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 
-const AnimationRenderer = ({ animationName, props }) => {
-  if (!animationName) {
-    return <div style={{ color: "red" }}>Error: No animation name provided.</div>;
+const Carousel = lazy(() => import("../Animations/Carousel/Carousel"));
+const Panorama = lazy(() => import("../Animations/Panorama/Panorama"));
+const ParallaxSphere = lazy(() => import("../Animations/ParallaxSphere/ParallaxSphere"));
+const AnimationRenderer = ({ animationName, ...props }) => {
+  let Component;
+  switch (animationName.toLowerCase()) {
+    case "carousel":
+      Component = Carousel;
+      break;
+    case "panorama":
+      Component = Panorama;
+      break;
+      case "parallaxsphere":
+        Component = ParallaxSphere;
+        break;
+    default:
+      return <div>Animation "{animationName}" not found.</div>;
   }
 
-  try {
-    // Ensure correct path and module exists
-    const AnimationComponent = React.lazy(async () => {
-      try {
-        const module = await import(`../Animations/${animationName}.jsx`);
-        if (!module || !module.default) {
-          throw new Error(`Module ${animationName} does not have a default export.`);
-        }
-        return module;
-      } catch (error) {
-        console.error(`Error loading animation: ${animationName}`, error);
-        return { default: () => <div style={{ color: "red" }}>Animation "{animationName}" not found.</div> };
-      }
-    });
-
-    return (
-      <Suspense fallback={<div>Loading animation...</div>}>
-        <AnimationComponent {...props} />
-      </Suspense>
-    );
-  } catch (error) {
-    console.error(`Failed to load animation: ${animationName}`, error);
-    return <div style={{ color: "red" }}>Failed to load animation: {animationName}</div>;
-  }
+  return (
+    <Suspense fallback={<div>Loading {animationName}...</div>}>
+      <Component {...props} />
+    </Suspense>
+  );
 };
 
 export default AnimationRenderer;

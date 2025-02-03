@@ -1,162 +1,130 @@
-import React, { useState } from "react";
-import { Box, Typography, TextField, Button, useTheme, useMediaQuery, Divider } from "@mui/material";
+import React from "react";
+import { Box, Grid, Typography, TextField, Button, IconButton, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import { FaBehance } from "react-icons/fa"; // Behance icon from react-icons
+import {FaBehance} from "react-icons/fa";
 
 const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
-  // State to hold email input value
-  const [email, setEmail] = useState("");
-
-  // Function to handle form submission
-  const handleSendClick = () => {
-    console.log("Entered Email:", email);
-  };
 
   return (
     <Box
+      component="footer"
       sx={{
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-        padding: isMobile ? "5vh 5vw" : "6vh 7vw",
+        padding: "3rem 5vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "4vh",
       }}
     >
-      {/* Thick White Divider */}
-      <Divider
-        sx={{
-          width: "100%",
-          borderBottom: `5px solid ${theme.palette.primary.contrastText}`,
-          marginBottom: "5vh",
-        }}
-      />
-
-      {/* Main Footer Row */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-          flexWrap: "wrap",
-          gap: isMobile ? "5vh" : "0",
-        }}
-      >
-        {/* Left Side: Logo + Subscription Form */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "2vh",
-            width: isMobile ? "100%" : "30%",
-            alignItems: isMobile ? "center" : "flex-start",
-            textAlign: isMobile ? "center" : "left",
-          }}
-        >
-          {/* Logo */}
-          <Typography variant="h5" sx={{ fontWeight: "bold", letterSpacing: "0.05em" }}>
-            CITIES.OS
+      <Grid container spacing={4} justifyContent="space-between" alignItems="center">
+        {/* Left Section - Logo & Contact Form */}
+        <Grid item xs={12} md={4} textAlign={isMobile ? "center" : "left"}>
+          <Typography variant="h6" fontWeight="bold">
+            CITIESS.OS
+          </Typography>
+          <Typography variant="subtitle2" fontStyle="italic" mt={1}>
+            Get in touch with us
           </Typography>
 
-          {/* Subscription Form */}
-          <Typography variant="body1" sx={{ fontStyle: "italic", color: "white" }}>
-            Get in touch with Us
-          </Typography>
+          {/* Email Subscription */}
           <Box
             sx={{
               display: "flex",
-              width: isMobile ? "80%" : "350px",
-              height: "3rem",
-              borderRadius: "10px",
-              overflow: "hidden",
-              backgroundColor: theme.palette.background.paper,
-              padding: "0.5vh",
-              flexWrap: isMobile ? "wrap" : "nowrap",
-              justifyContent: "space-between",
+              alignItems: "center",
+              gap: 1,
+              flexDirection: isMobile ? "column" : "row",
+              mt: 2,
             }}
           >
             <TextField
-              fullWidth
+              variant="outlined"
               placeholder="you@example.com"
-              variant="standard"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} // Update state
+              sx={{
+                backgroundColor: "white",
+                borderRadius: "5px",
+                flex: 1,
+                minWidth: isMobile ? "90%" : "auto",
+              }}
               InputProps={{
-                disableUnderline: true,
-                sx: {
-                  padding: "1vh",
-                  backgroundColor: theme.palette.background.paper,
-                },
+                sx: { height: "4vh",padding: "0 1rem" },
               }}
             />
             <Button
-              onClick={handleSendClick} // Handle button click
+              variant="contained"
               sx={{
-                backgroundColor: theme.palette.primary.main,
+                backgroundColor: 'transparent',
                 color: theme.palette.primary.contrastText,
-                borderRadius: "50px",
-                padding: "1vh 3vw",
-                width: "auto",
+                textTransform: "none",
                 "&:hover": { backgroundColor: theme.palette.primary.light },
               }}
             >
               Send
             </Button>
           </Box>
-        </Box>
+        </Grid>
 
-        {/* Center: Navigation Links */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: isTablet ? "4vw" : "2vw",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            width: isMobile ? "100%" : "40%",
-            textAlign: "center",
-          }}
-        >
-          {["HOME", "SERVICES", "DIGITAL CITIES", "ABOUT US", "BLOG", "CONTACT US"].map((link) => (
-            <Typography
-              key={link}
-              variant="body2"
-              sx={{
-                cursor: "pointer",
-                fontSize: isMobile ? "0.9rem" : "0.9rem",
-                "&:hover": { textDecoration: "underline" },
-              }}
-            >
-              {link}
+        {/* Center Section - Copyright */}
+        <Grid item xs={12} md={4} textAlign="center">
+          <Typography variant="body2" sx={{ maxWidth: "50vw", margin: "0 auto",marginTop: "7rem" }}>
+            © {new Date().getFullYear()} CITIESS.OS - All rights reserved.
+          </Typography>
+        </Grid>
+
+        {/* Right Section - Navigation & Social Media */}
+        <Grid item xs={12} md={4} textAlign={isMobile ? "center" : "right"}>
+          {/* Navigation Links */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: isMobile ? "center" : "flex-end",
+              flexWrap: "wrap",
+              gap: "0.9rem",
+              fontSize: "0.5rem",
+              fontWeight: "bold",
+              width: isMobile?"100vw":"35vw",
+              marginTop : "1vh",
+           overflow: "hidden",
+            }}
+          >
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit",fontSize:isMobile?"0.5rem":"0.7rem" }}> 
+              HOME
             </Typography>
-          ))}
-        </Box>
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit",fontSize:isMobile?"0.5rem":"0.7rem" }}>
+              SERVICES
+            </Typography>
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit",fontSize:isMobile?"0.5rem":"0.7rem" }}>
+              DIGITAL CITIES
+            </Typography>
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit" ,fontSize:isMobile?"0.5rem":"0.7rem"}}>
+              ABOUT US
+            </Typography>
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit" ,fontSize:isMobile?"0.5rem":"0.7rem"}}>
+              BLOG
+            </Typography>
+            <Typography component="a" href="#" sx={{ textDecoration: "none", color: "inherit",fontSize:isMobile?"0.5rem":"0.7rem",marginRight:"5vw" }}>
+              CONTACT US
+            </Typography>
+          </Box>
 
-        {/* Right Side: Social Icons */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: "1.5vw",
-            justifyContent: isMobile ? "center" : "flex-end",
-            width: isMobile ? "100%" : "20%",
-          }}
-        >
-          <FaBehance size={24} style={{ cursor: "pointer" }} />
-          <FacebookIcon sx={{ cursor: "pointer" }} />
-          <InstagramIcon sx={{ cursor: "pointer" }} />
-        </Box>
-      </Box>
-
-      {/* Copyright Text */}
-      <Typography variant="body2" sx={{ textAlign: "center", opacity: 0.7, fontSize: "0.9rem" }}>
-        COPYRIGHTS dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-      </Typography>
+          {/* Social Media Icons */}
+          <Box sx={{ display: "flex", justifyContent: isMobile ? "center" : "flex-end", mt: 2, gap: 2 }}>
+            <IconButton href="#" sx={{ color: "white" }}>
+            <FaBehance/>
+            </IconButton>
+            <IconButton href="#" sx={{ color: "white" }}>
+              <FacebookIcon />
+            </IconButton>
+            <IconButton href="#" sx={{ color: "white" }}>
+              <InstagramIcon />
+            </IconButton>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

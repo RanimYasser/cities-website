@@ -30,6 +30,7 @@ const Button = ({
         border: style.border || "none",
         borderRadius: style.borderRadius || "0",
         marginTop: style.marginTop || "1vh",
+        marginLeft: style.marginLeft || "0vw",
         boxShadow: style.boxShadow || "none",
         "&:hover": {
           backgroundColor: onHover ? style.hoverBackgroundColor || "#555555" : style.backgroundColor || "transparent",

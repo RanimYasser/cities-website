@@ -1,0 +1,134 @@
+const pageData = {
+    page: "home",
+    sections: [
+      {
+        type: "text+media",
+        props: {
+          media: {
+            type: "video",
+            src: "/Media/Videos/homePageHeroSection.mp4",
+            alt: "Urban Planning Video",
+            autoplay: true,
+            loop: true,
+            muted: true,
+            style: {
+              height: "100vh",
+              objectFit: "cover",
+              width: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              zIndex: -1,
+            },
+          },
+          texts: [
+            {
+              section: "main",
+              type: "paragraph",
+              content: "REVOLUTIONIZING URBAN PLANNING PROCESSES THROUGH GAMING ENGINES AND DIGITAL TWINS TECHNOLOGY",
+              style: {
+                fontSize: "2.8rem",
+                fontWeight: "bold",
+                color: "white",
+                marginBottom: "3vh",
+                marginTop: "15vh",
+                textAlign: "left",
+                lineHeight: "1.3",
+                width: "40vw",
+              },
+            },
+            {
+              section: "main",
+              type: "button",
+              content: "Learn More",
+              link: "/learn-more",
+              icon: "+",
+              style: {
+                color: "white",
+                fontSize: "1.5rem",
+                backgroundColor: "transparent",
+                fontWeight: "bold",
+                width: "auto",
+                marginTop: "2vh",
+                borderRadius: "0.5em",
+                padding: "1vh 2vw",
+                border: "1px solid white",
+              },
+            },
+            {
+              section: "subsection",
+              content: [
+                {
+                  title: "Our Services",
+                  description: "We provide urban planning solutions powered by gaming engines and digital twins technology.",
+                  style: {
+                    fontSize: "2rem",
+                    titleColor: "white",
+                    descColor: "rgba(255,255,255,0.8)",
+                    width: "45%",
+                    marginBottom: "2vh",
+                  },
+                },
+                {
+                  title: "Why Digital Twins?",
+                  description: "Digital Twins enable smarter decision-making through real-time data visualization and AI-powered analytics.",
+                  style: {
+                    fontSize: "2rem",
+                    titleColor: "white",
+                    descColor: "rgba(255,255,255,0.8)",
+                    width: "45%",
+                    marginLeft: "5vw",
+                    marginBottom: "2vh",
+                  },
+                },
+              ],
+            },
+          ],
+          style: {
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            padding: "5vh 3vw",
+            marginLeft: "3%",
+            marginRight: "10%",
+            position: "relative",
+            gradientOverlay: {
+              height: "50%",
+              background: "linear-gradient(to top, rgba(4,37,22,0.9), transparent)",
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              zIndex: 0,
+            },
+          },
+        },
+      },
+      {
+        type: "animation",
+        props: {
+          animationName: "carousel",
+          slides: [
+            { image: "/Media/Images/Envision.png", title: "Envision", subtitle: "Creating a vision for the future" },
+            { image: "/Media/Images/Flood.png", title: "Flood Simulation", subtitle: "Predicting and mitigating flood risks" },
+            { image: "/Media/Images/Pathfinding.png", title: "Pathfinding", subtitle: "Optimizing urban mobility" },
+            { image: "/Media/Images/Railway.png", title: "Railway Station", subtitle: "Future-proofing public transport" }
+          ],
+        },
+      },
+      {
+        type: "animation",
+        props: {
+          animationName: "panorama",
+          image: "/Media/Images/Panorama.jpg",
+          title: "Envision",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          button: {
+            text: "Learn More",
+            link: "/learn-more",
+          },
+        },
+      },
+    ],
+  };
+  

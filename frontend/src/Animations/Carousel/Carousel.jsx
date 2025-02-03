@@ -34,7 +34,7 @@ const Carousel = ({ slides, loop = false }) => {
           sx={{
             display: "flex",
             transition: "transform 0.3s ease-out",
-            gap: isMobile ? "2%" : isTablet ? "3%" : "2%",
+            gap: isMobile ? "2%" : isTablet ? "3%" : "0.3%",
           }}
         >
           {slides.map((slide, index) => (
@@ -42,7 +42,7 @@ const Carousel = ({ slides, loop = false }) => {
               key={index}
               className="embla__slide"
               sx={{
-                flex: `0 0 ${isMobile ? "85%" : isTablet ? "45%" : "26%"}`,
+                flex: `0 0 ${isMobile ? "85%" : isTablet ? "45%" : "23%"}`,
                 marginTop: "2%",
                 marginLeft: "2rem",
                 marginRight: "2rem",
@@ -59,11 +59,11 @@ const Carousel = ({ slides, loop = false }) => {
                 className="embla__slide__inner"
                 sx={{
                   width: "100%",
-                  height: "60vh",
+                  height: "50vh",
                   backgroundImage: `url(${slide.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  borderRadius: "10px",
+                
                   position: "relative",
                   transition: "border-radius 0.3s ease",
                   "&:hover": {
