@@ -1,11 +1,12 @@
-/* Wrapper for controlling scroll height */
+/* Full-screen Wrapper */
 .parallax-sphere-wrapper {
     width: 100%;
     min-height: 300vh;
     position: relative;
+    background-color: #0c291b;
 }
 
-/* Sticky Container */
+/* Sticky Parallax Section */
 .parallax-sphere-container {
     width: 100%;
     height: 100vh;
@@ -15,73 +16,215 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: background-color 1s ease-in-out;
+    
 }
 
-/* Background Image */
-.parallax-background {
+/* Background Image Circle */
+.background-circle {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
+    height: 100vw;
+    max-width: 150vh;
+    max-height: 150vh;
+    border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
+    transition: transform 1s ease-out, opacity 1s ease-in-out;
 }
 
-/* Centered Circle */
-.circle-wrapper {
+/* Expanding Inner Green Circle */
+.inner-circle {
     position: absolute;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    background-color: rgba(12, 41, 27, 1);
+    transition: transform 0.8s ease-out, opacity 1s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
 }
 
-/* Expanding Circle */
-.parallax-circle {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    opacity: 0;
-    transition: transform 0.1s ease-out, opacity 0.5s ease-out;
-}
-
-/* Text Content */
+/* Main Text (Parallax Content) */
 .parallax-text {
     position: absolute;
     color: white;
     text-align: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    max-width: 50vw;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+/* Title Styling */
 .parallax-text h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
     margin: 0;
-}
-
-.parallax-text p {
-    font-size: 0.8rem;
-    margin: 0.5rem 0;
-    width: 30vw;
-}
-
-/* Button */
-.parallax-text .button {
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-/* Next Section */
-.next-section {
-    height: 100vh;
-    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 0.5rem;
+}
+
+/* Outlined first word */
+.parallax-text h1 .outlined {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    font-weight: bold;
+}
+
+/* Filled second word */
+.parallax-text h1 .filled {
+    color: white;
+    font-weight: bold;
+}
+
+/* Parallax text fade-out on scroll */
+.parallax-text.moving {
+    transform: translateY(calc(-100px * var(--progress)));
+    opacity: calc(1 - var(--progress));
+}
+
+/* NEW SECTION */
+.new-section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c291b;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+/* Container to structure content */
+.new-section-container {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: white;
+}
+
+/* Left Side - Large Bold Text */
+.new-section-left h1 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+   width: 25vw;
+    line-height: 1.2;
+    margin-top: 5vh;
+    word-break: break-word;
+}
+
+/* Right Side - Description */
+.new-section-right {
+    max-width: 50%;
+    text-align: left;
+}
+
+/* Right Side - Title in Bold */
+.new-section-right p:first-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 3vh;
+    width: 50vw;
+}
+
+/* Right Side - Regular Text */
+.new-section-right p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+
+.new-section-back:hover {
+    color: #ddd;
+}
+
+.new-section-back::before {
+    content: "←";
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* LEARN MORE BUTTON */
+.new-section-button {
+    position: absolute;
+    bottom: 50px;
+   margin-left: 38vw;
+   margin-bottom: 13vh;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.new-section-button:hover {
+    background: white;
+    color: #0c291b;
+}
+
+
+
+/* RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .new-section-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .new-section-left h1 {
+        max-width: 100%;
+        font-size: 3rem;
+    }
+
+    .new-section-right {
+        max-width: 100%;
+    }
+
+    .new-section-back {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 20px;
+    }
+
+    .new-section-button {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .parallax-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .new-section-left h1 {
+        font-size: 2.5rem;
+    }
+
+    .new-section-right p {
+        font-size: 0.9rem;
+    }
+
+    .new-section-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 }

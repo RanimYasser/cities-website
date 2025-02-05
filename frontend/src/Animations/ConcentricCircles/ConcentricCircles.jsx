@@ -4,8 +4,8 @@ import "./ConcentricCircles.css";
 
 const ConcentricCircles = ({ title, description, button }) => {
   const circles = [
-    { size: "40vw", delay: 0 },
-    { size: "60vw", delay: 0.5 },
+    { size: "30vw", delay: 0 },  
+    { size: "45vw", delay: 0.5 },
   ];
 
   return (

@@ -6,7 +6,7 @@ import theme from "./theme";
 import Navbar from "./Shared-components/Desktop/Navbar";
 import Footer from "./Shared-components/Footer";
 import Loader from "./Renderer/Loader"; 
-
+import AnimatedSlides from "./Animations/AnimatedSlides/AnimatedSlides";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -297,7 +297,7 @@ const ResponsiveLayout = () => {
       {pageData.sections.map((section, index) => (
         <Loader key={index} content={section} />
       ))}
-   
+ 
      <Footer />
     </>
   );
