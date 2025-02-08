@@ -78,7 +78,7 @@ const ParallaxSphere = ({
             <Button
               text={button.text}
               href={button.link}
-              icon={button.icon || "+"}
+              icon={button.icon }
             />
           )}
         </div>
