@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider, useMediaQuery } from "@mui/material";
 import theme from "./theme";
-
+import "./index.css";
 // Components
 import Navbar from "./Shared-components/Desktop/Navbar";
 import Footer from "./Shared-components/Footer";

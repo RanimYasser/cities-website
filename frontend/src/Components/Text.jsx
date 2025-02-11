@@ -18,7 +18,7 @@ const Text = ({ content = [], style = {} }) => {
             fontWeight: textItem?.fontWeight || style?.fontWeight || "normal",
             marginBottom: textItem?.marginBottom || "8px",
             width: textItem?.width||"40vw",
-            marginLeft:textItem?.marginLeft||"30vw",
+            marginLeft:textItem?.marginLeft||"25vw",
           
           }}
         >

@@ -122,7 +122,7 @@ const Home = () => {
                   fontSize: "1rem",
                   fontWeight: "bold",
                   marginBottom: "3vh",
-                  marginLeft:"50vw",
+                  marginLeft:"0vw",
                 },
               },
             },
@@ -217,7 +217,7 @@ const Home = () => {
         type: "animation",
         props: {
           animationName: "panorama",
-          image: "/Media/Images/Panorama.jpg",
+          image: "/Media/Images/Panorama.png",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           descriptionStyles: {  
@@ -258,7 +258,7 @@ const Home = () => {
             padding: "0 5vw",
           },
           overlay: {  
-            position: "absolute",
+            position: "fixed",
             top: 0,
             left: 0,
             width: "100%",

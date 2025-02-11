@@ -21,6 +21,7 @@
     "gsap": "^3.12.7",
     "next": "^15.1.6",
     "react": "^19.0.0",
+    "react-animated-counter": "^1.7.9",
     "react-dom": "^19.0.0",
     "react-helmet-async": "^2.0.5",
     "react-icons": "^5.4.0",

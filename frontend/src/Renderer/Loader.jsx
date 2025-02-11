@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 import AnimationRenderer from "./AnimationRenderer";
 import MediaWithText from "../Components/MediaWithText";
 import Text from "../Components/Text";
-
+import Button from "../Components/Button";
+import ObjectCarousel from "../Components/Carousels/ObjectCarousel/ObjectCarousel";
 const Loader = ({ content }) => {
   if (!content) return null;
 
@@ -13,9 +14,26 @@ const Loader = ({ content }) => {
     case "text+media":
       return <MediaWithText media={props.media} texts={props.texts} style={props.style} />;
 
-    case "text":
-      return <Text content={[{ text: props.title, fontSize: "2rem", fontWeight: "bold" }, { text: props.description }]} style={props.style} />;
-
+      case "text":
+      console.log("✅ Rendering Text Component:", props); 
+      return (
+        <Box sx={{...props.style }}>
+          <Text content={[{ text: props.title }, { text: props.description }]} style={props.style} />
+        </Box>
+      );
+        case "button":
+      return (
+        <Button
+          text={props.text}
+          icon={props.icon}
+          onClick={props.onClick}
+          href={props.link}
+          style={props.style}
+          onHover={props.onHover}
+          variant={props.variant}
+          size={props.size}
+        />
+      );
     case "container":
       return (
         <Box sx={props.backgroundStyle}>
@@ -24,6 +42,9 @@ const Loader = ({ content }) => {
           ))}
         </Box>
       );
+
+    case "objectcarousel": // ✅ Added support for ObjectCarousel
+      return <ObjectCarousel {...props} />;
 
     case "animation":
       return (

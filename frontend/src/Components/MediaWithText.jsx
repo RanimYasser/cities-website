@@ -30,11 +30,11 @@ const MediaWithText = ({ media, texts, style = {} }) => {
         sx={{
           position: "absolute",
           top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
+          left: style.left || 0,
+          width: style.width || "100%", // Set width explicitly
+          height: "100%", // Full height of the container
           objectFit: style.objectFit || "cover",
-          zIndex: -1,
+          zIndex: -1, // Ensure it stays behind content
         }}
       />
 
@@ -45,7 +45,7 @@ const MediaWithText = ({ media, texts, style = {} }) => {
             position: "absolute",
             bottom: 0,
             left: 0,
-            width: style.gradientOverlay.width || "100%", // Added width
+            width: style.gradientOverlay.width || "100%", // Ensure it spans the full width
             height: style.gradientOverlay.height || "40%",
             background: style.gradientOverlay.background || "linear-gradient(to top, #042516, transparent)",
             zIndex: 0,
@@ -65,7 +65,7 @@ const MediaWithText = ({ media, texts, style = {} }) => {
           padding: style.padding || "5vh 3vw",
           color: style.color || theme.palette.primary.contrastText,
           maxWidth: style.maxWidth || "70vw",
-          width: style.contentWidth || "100%", // Added width
+          width: style.contentWidth || "100%", // Set content width
           gap: style.gap || "2vh",
         }}
       >
@@ -85,9 +85,9 @@ const MediaWithText = ({ media, texts, style = {} }) => {
                       marginBottom: textItem.style?.marginBottom || "10vh",
                       marginTop: textItem.style?.marginTop || "0vh",
                       textAlign: textItem.style?.textAlign || "left",
-                      maxWidth: textItem.style?.width || "100%", // Added width
+                      maxWidth: textItem.style?.width || "100%", // Ensure maxWidth is set
                       fontWeight: textItem.style?.fontWeight || "bold",
-                      width: textItem.style?.width || "100%", // Added width
+                      width: textItem.style?.width || "100%", // Ensure full width is applied
                     }}
                   >
                     {textItem.content}
@@ -104,9 +104,9 @@ const MediaWithText = ({ media, texts, style = {} }) => {
                       color: textItem.style?.color || theme.palette.primary.contrastText,
                       backgroundColor: textItem.style?.backgroundColor || "transparent",
                       fontSize: textItem.style?.fontSize || "1rem",
-                      fontWeight: textItem.style?.fontWeight || "bold",
+                      fontWeight: "bold",
                       marginTop: "1vh",
-                      width: textItem.style?.width || "auto", // Added width
+                      width: textItem.style?.width || "auto", // Ensure width is applied
                     }}
                   />
                 );
@@ -123,7 +123,7 @@ const MediaWithText = ({ media, texts, style = {} }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: style.subsectionJustifyContent || "space-between",
-            width: style.subsectionWidth || "100%", // Added width
+            width: style.subsectionWidth || "100%", // Ensure full width for subsections
             gap: style.subsectionGap || "2vw",
             marginTop: style.subsectionMarginTop || "5vh",
           }}
@@ -135,9 +135,9 @@ const MediaWithText = ({ media, texts, style = {} }) => {
                 <Box
                   key={subIndex}
                   sx={{
-                    flex: "1 1 calc(50% - 2vw)", // Responsive width for subsections
+                    flex: "1 1 calc(50% - 2vw)", // Ensure responsiveness for subsections
                     marginBottom: subsection.style?.marginBottom || "0",
-                    width: subsection.style?.width || "auto", // Added width
+                    width: subsection.style?.width || "auto", // Apply width style here as well
                   }}
                 >
                   <Typography
@@ -145,11 +145,11 @@ const MediaWithText = ({ media, texts, style = {} }) => {
                       fontSize: subsection.style?.titleFontSize || "1.2rem",
                       fontWeight: subsection.style?.titleFontWeight || "bold",
                       color: subsection.style?.titleColor || theme.palette.primary.main,
-                      marginBottom:subsection.style?.marginBottom|| "1vh",
-                      marginRight: subsection.style?.marginRight|| "1vw",
-                      marginTop: subsection.style?.marginTop|| "1vh",
-                      marginLeft: subsection.style?.marginLeft|| "1vw",
-                      width: subsection.style?.titleWidth || "100%", // Added width
+                      marginBottom: subsection.style?.marginBottom || "1vh",
+                      marginRight: subsection.style?.marginRight || "1vw",
+                      marginTop: subsection.style?.marginTop || "1vh",
+                      marginLeft: subsection.style?.marginLeft || "1vw",
+                      width: subsection.style?.titleWidth || "100%", // Ensure title width is applied
                     }}
                   >
                     {subsection.title}
@@ -159,18 +159,18 @@ const MediaWithText = ({ media, texts, style = {} }) => {
                       fontSize: subsection.style?.descFontSize || "1rem",
                       lineHeight: subsection.style?.lineHeight || "1.5",
                       color: subsection.style?.descColor || theme.palette.text.secondary,
-                      marginBottom:subsection.style?.marginBottom|| "1vh",
-                      marginRight: subsection.style?.marginRight|| "1vw",
-                      marginTop: subsection.style?.marginTop|| "1vh",
-                      marginLeft: subsection.style?.marginLeft|| "1vw",
-                      width: subsection.style?.width || "100%", // Added width
+                      marginBottom: subsection.style?.marginBottom || "1vh",
+                      marginRight: subsection.style?.marginRight || "1vw",
+                      marginTop: subsection.style?.marginTop || "1vh",
+                      marginLeft: subsection.style?.marginLeft || "1vw",
+                      width: subsection.style?.width || "100%", // Ensure description width is applied
                     }}
                   >
                     {subsection.description}
                   </Typography>
                 </Box>
               ))
-            )} 
+            )}
         </Box>
       </Box>
     </Box>

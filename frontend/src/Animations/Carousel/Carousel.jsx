@@ -22,10 +22,10 @@ const Carousel = ({ slides, loop = false }) => {
     <Box
       sx={{
         position: "relative",
-        maxWidth: "100%",
+        maxWidth: "96%",
         overflow: "hidden",
         backgroundColor: theme.palette.primary.main,
-        padding: "4vh 0",
+        height:"60vh",
       }}
     >
       <Box className="embla" ref={emblaRef} sx={{ overflow: "hidden", width: "100%" }}>
@@ -34,7 +34,7 @@ const Carousel = ({ slides, loop = false }) => {
           sx={{
             display: "flex",
             transition: "transform 0.3s ease-out",
-            gap: isMobile ? "2%" : isTablet ? "3%" : "0.3%",
+            gap: isMobile ? "2%" : isTablet ? "3%" : "0%",
           }}
         >
           {slides.map((slide, index) => (
@@ -43,9 +43,9 @@ const Carousel = ({ slides, loop = false }) => {
               className="embla__slide"
               sx={{
                 flex: `0 0 ${isMobile ? "85%" : isTablet ? "45%" : "23%"}`,
-                marginTop: "2%",
-                marginLeft: "2rem",
-                marginRight: "2rem",
+                marginTop: "1%",
+                marginLeft: "1rem",
+                marginRight: "1rem",
                 overflow: "visible",
                 cursor: "pointer",
                 transition: "transform 0.3s ease-out",
@@ -75,7 +75,8 @@ const Carousel = ({ slides, loop = false }) => {
                 <Box
                   sx={{
                     position: "absolute",
-                    bottom: "0vh",
+                    bottom: "4vh",
+              
                     left: "50%",
                     transform: "translateX(-50%)",
                     width: "100%",
@@ -102,50 +103,6 @@ const Carousel = ({ slides, loop = false }) => {
         </Box>
       </Box>
 
-      {/* Navigation Arrows */}
-      <Button
-        onClick={scrollPrev}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "2vw",
-          transform: "translateY(-50%)",
-          zIndex: 10,
-          minWidth: "60px",
-          minHeight: "60px",
-          borderRadius: "50%",
-          fontSize: "2vw",
-      
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-         
-        }}
-      >
-        &#9664; {/* Left arrow */}
-      </Button>
-
-      <Button
-        onClick={scrollNext}
-        sx={{
-          position: "absolute",
-          top: "50%",
-          right: "2vw",
-          transform: "translateY(-50%)",
-          zIndex: 10,
-          minWidth: "60px",
-          minHeight: "60px",
-          borderRadius: "50%",
-          fontSize: "2vw",
-         
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-         
-        }}
-      >
-        &#9654; {/* Right arrow */}
-      </Button>
     </Box>
   );
 };

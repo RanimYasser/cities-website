@@ -1,5 +1,6 @@
 import React from "react";
 import { ImgComparisonSlider } from "@img-comparison-slider/react";
+import './ImageComparison.css';
 const ImageComparison = ({ realImage, virtualImage }) => {
   return (
     <div className="image-comparison">

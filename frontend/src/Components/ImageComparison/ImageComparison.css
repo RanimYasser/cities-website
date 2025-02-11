@@ -1,0 +1,17 @@
+.image-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;  /* Set to desired height */
+    width: 100%;   /* Ensure it fits within the available width */
+    overflow: hidden;
+    margin-right: -10vw;
+}
+
+.comparison-image {
+    object-fit: cover;  /* The image will cover the entire container, potentially cropping it */
+    object-position: center;  /* Keeps the image centered */
+    width: 100%;
+    height: 100%;
+    display: block;
+}

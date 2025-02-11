@@ -21,7 +21,7 @@ const Button = ({
         color: style.color || "#ffffff",
         backgroundColor: style.backgroundColor || "transparent",
         fontSize: style.fontSize || "1rem",
-        fontWeight: style.fontWeight || "bold",
+        fontWeight: style.fontWeight || "",
         textTransform: style.textTransform || "none",
         display: "flex",
         alignItems: "center",
