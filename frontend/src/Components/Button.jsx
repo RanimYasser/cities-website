@@ -1,5 +1,6 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Import the arrow icon
 
 const Button = ({
   text,
@@ -7,10 +8,16 @@ const Button = ({
   onClick,
   href,
   style = {},
-  onHover = false,  // Default to false
+  onHover = false, // Default to false
   variant = "contained",
   size = "medium",
 }) => {
+  // Function to dynamically select the correct icon
+  const getIcon = () => {
+    if (icon === "ArrowForward") return <ArrowForwardIcon />;
+    return null;
+  };
+
   return (
     <MuiButton
       href={href}
@@ -38,11 +45,11 @@ const Button = ({
           boxShadow: onHover ? style.hoverBoxShadow || "none" : "none",
           padding: style.padding || "0",
           border: style.border || "none",
-        }
+        },
       }}
     >
-      {icon && <span>{icon}</span>}
       {text}
+      {getIcon()} {/* Render the correct icon */}
     </MuiButton>
   );
 };

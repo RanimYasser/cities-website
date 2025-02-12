@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useEmblaCarousel from "embla-carousel-react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Carousel = ({ slides, loop = false }) => {
   const theme = useTheme();
@@ -25,7 +25,7 @@ const Carousel = ({ slides, loop = false }) => {
         maxWidth: "96%",
         overflow: "hidden",
         backgroundColor: theme.palette.primary.main,
-        height:"60vh",
+        height: "60vh",
       }}
     >
       <Box className="embla" ref={emblaRef} sx={{ overflow: "hidden", width: "100%" }}>
@@ -43,8 +43,9 @@ const Carousel = ({ slides, loop = false }) => {
               className="embla__slide"
               sx={{
                 flex: `0 0 ${isMobile ? "85%" : isTablet ? "45%" : "23%"}`,
-                marginTop: "1%",
+                marginTop: "0%",
                 marginLeft: "1rem",
+                
                 marginRight: "1rem",
                 overflow: "visible",
                 cursor: "pointer",
@@ -63,46 +64,33 @@ const Carousel = ({ slides, loop = false }) => {
                   backgroundImage: `url(${slide.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                
                   position: "relative",
                   transition: "border-radius 0.3s ease",
+                  borderRadius: "1rem",
+                  overflow: "hidden",
                   "&:hover": {
-                    borderRadius: "50%", // Circle effect on hover
-                  }
+                    borderRadius: "50%",
+                  },
+                }}
+              ></Box>
+
+              {/* Title Below Image */}
+              <Typography
+                variant="h6"
+                sx={{
+                  marginTop: "1vh",
+                  textAlign: "center",
+                  fontSize: isMobile ? "3vw" : "1.5vw",
+                  fontWeight: "bold",
+                  color: theme.palette.text.primary,
                 }}
               >
-                {/* Title Label */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: "4vh",
-              
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "100%",
-                    backgroundColor: `rgba(${theme.palette.primary.dark.replace("rgb(", "").replace(")", "")}, 0.6)`,
-                    color: "#fff",
-                    textAlign: "center",
-                    padding: "1vh 0",
-                    borderRadius: "1vh",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontSize: isMobile ? "3vw" : "1.5vw",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {slide.title}
-                  </Typography>
-                </Box>
-              </Box>
+                {slide.title}
+              </Typography>
             </Box>
           ))}
         </Box>
       </Box>
-
     </Box>
   );
 };

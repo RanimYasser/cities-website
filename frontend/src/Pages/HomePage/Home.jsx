@@ -2,7 +2,7 @@ import React from "react";
 import { useMediaQuery } from "@mui/material";
 import theme from "../../theme";
 import Loader from "../../Renderer/Loader";
-
+import VideoTransitionPage from "../../Animations/Game/VideoTransitionPage";
 const Home = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -10,96 +10,127 @@ const Home = () => {
     page: "home",
     sections: [
       //  **FIRST SECTION: HERO (Video + Text + Subsections)**
+   
       {
-        type: "text+media",
-        props: {
-          media: {
-            type: "video",
-            src: "/Media/Videos/homePageHeroSection.mp4",
-            alt: "Urban Planning Video",
-            autoplay: true,
-            loop: true,
-            muted: true,
-            style: {
-              height: isMobile ? "100vh" : "70vh",
-             
-            },
+        "type": "text+media",
+        "props": {
+          "media": {
+            "type": "video",
+            "src": "/Media/Videos/homePageHeroSection.mp4",
+            "alt": "Urban Planning Video",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "style": {
+              "height": "100vh",
+              "width": "100vw",
+              "objectFit": "cover",
+              "position": "absolute",
+              "top": 0,
+              "left": 0,
+              "zIndex": -1
+            }
           },
-          texts: [
+          "texts": [
             {
-              section: "main",
-              type: "paragraph",
-              content:
-                       "REVOLUTIONIZING URBAN PLANNING PROCESSES THROUGH GAMING ENGINES AND DIGITAL TWINS TECHNOLOGY",
-                     style: {
-                       fontSize: isMobile ? "1.2rem" : "2.2rem",
-                       fontWeight: "600",
-                       color: theme.palette.primary.contrastText,
-                       marginBottom: "3vh",
-                       marginTop: "10vh",
-                       textAlign: "left",
-                       width: isMobile ? "80vw" : "34vw",
-                     },
+              "section": "main",
+              "type": "paragraph",
+              "content": "REVOLUTIONIZING URBAN PLANNING PROCESSES THROUGH GAMING ENGINES AND DIGITAL TWINS TECHNOLOGY",
+              "style": {
+                "fontSize": "1.9rem",
+                "fontWeight": "bold",
+                "color": "#FFFFFF",
+                "marginBottom": "1vh",
+                "marginTop": "10vh",
+                "textAlign": "left",
+                "width": "40vw",
+                "zIndex": 1
+              }
             },
             {
-              section: "main",
-                     type: "button",
-                     content: "Learn More",
-                     link: "/learn-more",
-                     icon: "+",
-                     style: {
-                       onHover: false,
-                       color: theme.palette.primary.contrastText,
-                       fontSize: isMobile ? "1rem" : "1.5rem",
-                       backgroundColor: "transparent",
-                       fontWeight: "bold",
-                       width: "auto",
-                       marginTop: "1vh",
-                      
-                     },
+              "section": "main",
+              "type": "button",
+              "content": "Learn More",
+              "link": "/learn-more",
+              "icon": "+",
+              "style": {
+                "onHover": false,
+                "color": "#FFFFFF",
+                "fontSize": "1.2rem",
+                "backgroundColor": "transparent",
+                "fontWeight": "bold",
+                "padding": "10px 20px",
+                "width": "auto",
+                "marginTop": "2vh",
+                "marginLeft": "-62vw",
+                "zIndex": 1
+              }
             },
             {
-              section: "subsection",
-                      content: [
-                        {
-                          title: "Our Services",
-                          description:
-                            "We provide urban planning solutions powered by gaming engines and digital twins technology.",
-                          style: {
-                            fontSize: isMobile ? "1.2rem" : "1.5rem",
-                            titleColor: theme.palette.primary.contrastText,
-                            descColor: theme.palette.primary.contrastText,
-                            width: isMobile ? "90vw" : "20vw",
-                          },
-                        },
-                        {
-                          title: "Why Digital Twins?",
-                          description:
-                            "Digital Twins enable smarter decision-making through real-time data visualization and AI-powered analytics.",
-                          style: {
-                            fontSize: isMobile ? "1.2rem" : "2.5rem",
-                            titleColor: theme.palette.primary.contrastText,
-                            descColor: theme.palette.primary.contrastText,
-                            width: isMobile ? "90vw" : "20vw",
-                            marginLeft: isMobile ? "0" : "32vw",
-                          },
-                        },
-                      ],
-            },
+              "section": "subsection",
+              "content": [
+                {
+                  "title": "Our Services",
+                  "description": "We provide urban planning solutions powered by gaming engines and digital twins technology.",
+                  "style": {
+                    "titleFontSize": "1.5rem",
+                    "titleFontWeight": "bold",
+                    "titleColor": "#FFFFFF",
+                    "descFontSize": "0.8rem",
+                    "descColor": "#FFFFFF",
+                    "width": "30vw",
+                    "textAlign": "left",
+                    "marginBottom": "2vh"
+                  }
+                },
+                {
+                  "title": "Why Digital Twins?",
+                  "description": "Digital Twins enable smarter decision-making through real-time data visualization and AI-powered analytics.",
+                  "style": {
+                    "titleFontSize": "1.2rem",
+                    "titleFontWeight": "bold",
+                    "titleColor": "#FFFFFF",
+                    "descFontSize": "1rem",
+                    "descColor": "#FFFFFF",
+                    "width": "30vw",
+                    "textAlign": "left",
+                    "marginBottom": "2vh"
+                  }
+                }
+              ],
+              "style": {
+                "display": "flex",
+                "justifyContent": "space-between",
+                "alignItems": "center",
+                "width": "100%",
+                "gap": "16vw",
+                "marginTop": "30vh"
+              }
+            }
           ],
-         style: {
-               height: "100vh",
-               padding: isMobile ? "3vh 5vw" : "5vh 3vw",
-               marginLeft: "3%",
-               marginRight: "10%",
-               gradientOverlay: {
-                 height: "100%",
-                 background: `linear-gradient(to top, ${theme.palette.primary.main}, transparent)`,
-               },
-          },
-        },
-      },
-
+          "style": {
+            "height": "100vh",
+            "padding": "5vh 3vw",
+            "marginLeft": "3%",
+            "marginRight": "10%",
+            "position": "relative",
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "space-between",
+            "alignItems": "flex-start",
+            "gradientOverlay": {
+              "height": "100%",
+              "width": "100%",
+              "position": "absolute",
+              "bottom": 0,
+              "left": 0,
+              "zIndex": 0,
+              "background": "linear-gradient(to top, rgba(4,37,22,1), transparent)"
+            }
+          }
+        }
+      }
+,      
 
       //  **SECOND SECTION: TEXT + CAROUSEL**
       {
@@ -275,6 +306,7 @@ const Home = () => {
       {pageData.sections.map((section, index) => (
              <Loader key={index} content={section} />
            ))}
+           <VideoTransitionPage/>
     </>
   );
 };

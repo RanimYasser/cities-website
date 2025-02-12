@@ -3,7 +3,8 @@ import ScrollImageSequence from "../../Animations/ScrollImagesSequence/ScrollIma
 import ImageComparison from "../../Components/ImageComparison/ImageComparison";
 import Loader from "../../Renderer/Loader";
 import theme from "../../theme";
-
+import "../../index.css";
+import "./KaustDigitalTwin.css";
 function KaustDigitalTwin() {
     const isMobile = window.innerWidth < 768;
 
@@ -63,9 +64,9 @@ function KaustDigitalTwin() {
       },
   ];
   const COUNTER_ITEMS = [
-    { number: 100, label: "AGENTS" },
-    { number: 43000, label: "ASSETS" },
-    { number: 30, label: "CITY GROWTH RATE" },
+    { number: 100, label: "AGENTS",suffix:"+" },
+    { number: 43000, label: "ASSETS" ,suffix:"+"},
+    { number: 30, label: "CITY GROWTH RATE" ,suffix:"+"},
 ]
   const KAUST_DIGITAL_TWIN_DATA = {
       page: "kaustDigitalTwin",
@@ -291,83 +292,105 @@ function KaustDigitalTwin() {
             },
     
 },
-          {
-            type: "text+media",
-            props: {
-              media: {
-                type: "image", // Use "video" if needed
-                src: "/Media/Images/bubbles.gif", // Use the path to your media file
-                alt: "bubbles",
-                autoplay: true,
-                loop: true,
-                muted: true,
-                style: {
-                  height: isMobile ? "100vh" : "20vh", // Adjusts height based on device
-                  objectFit: "cover", // Ensures the media covers the entire container
-                  width: "10vw", // Set width as per requirement
-                  position: "absolute", // Fill the container
-                  top: 0, // Aligns to the top
-                  left: 0, // Align to the left of the parent container
-                  zIndex: -1, // Ensure it stays behind content
-                },
-              },
-              texts: [
-                {
-                  section: "main",
-                  type: "paragraph",
-                  content: "OUR POPULATION MODEL - BASED APPROACH FOR VIRTUAL TWIN",
-                  style: {
-                    fontSize: isMobile ? "1.2rem" : "4.2rem",
-                    fontWeight: "bold",
-                    color: theme.palette.primary.contrastText, // Ensuring the text color contrasts
-                    marginBottom: "3vh",
-                    marginTop: "10vh", // Adjust the top margin as needed
-                    textAlign: "left", // Align the text to the left
-                    width: isMobile ? "80vw" : "50vw", // Adjust width based on device size
-                    zIndex: 1, // Ensure the text appears above the background media
-                  },
-                },
-                {
-                  section: "main",
-                  content: [
-                    {
-                      description:
-                        "We provide urban planning solutions powered by gaming engines and digital twins technology.",
-                      style: {
-                        fontSize: isMobile ? "1.2rem" : "1.5rem",
-                        titleColor: theme.palette.primary.contrastText, // Title color
-                        descColor: theme.palette.primary.contrastText, // Description color
-                        width: isMobile ? "90vw" : "50vw", // Adjust based on screen size
-                        zIndex: 1, // Ensure the content is visible over the background
-                      },
-                    },
-                    {
-                      section: "subsection",
-                      type: "button",
-                      content: "VIEW DEMO",
-                      link: "/demo",
-                      icon: "",
-                      style: {
-                        color: theme.palette.primary.contrastText, // Text color of the button
-                        fontSize: isMobile ? "1rem" : "1.5rem",
-                        backgroundColor: "transparent", // Transparent background
-                        fontWeight: "bold",
-                        width: "auto",
-                        marginTop: "2vh", // Adjust the margin to position it properly
-                        zIndex: 1, // Ensures the button is above the background media
-                        textAlign: "center", // Centers the button text
-                        border: "2px solid #ffffff", // Optional border style
-                        padding: "10px 20px", // Adjust padding for the button
-                        display: "inline-block",
-                      },
-                    },
-                  ],
-                },
-                
-              ],
-            },
-          },
+{
+    "type": "text+media",
+    "props": {
+      "media": {
+        "type": "image",
+        "src": "/Media/Images/bubbles.gif",
+        "alt": "bubbles",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "style": {
+          "height": "50vh",  // Adjust height dynamically
+          "objectFit": "cover",
+          "width": "50vw",    // Corrected width
+          "position": "absolute",
+          "top": 250,
+          "left":"22%",
+          "zIndex": -1
+        }
+      },
+      "texts": [
+        {
+          "section": "main",
+          "type": "paragraph",
+          "content": "OUR POPULATION MODEL - BASED APPROACH FOR VIRTUAL TWIN",
+          "style": {
+            "fontSize": "1.5rem",
+            "fontWeight": "bold",
+            "color": "#FFFFFF",
+            "marginBottom": "66vh",
+            "marginLeft": "0vw",
+            "marginTop": "10vh",
+            "textAlign": "left",
+            "width": "35vw",
+            "zIndex": 1,
+            "textAlign":"center",
+          }
+        },
+        {
+          "section": "main",
+          "type": "paragraph",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+          "style": {
+            "fontSize": "1rem",
+            "color": "#FFFFFF",
+            "width": "50vw",
+            "zIndex": 1,
+            "marginTop":"-65vh",
+            "marginBottom":"99vh",
+            "marginLeft":"-7vw",
 
+          }
+        },
+        {
+          "section": "main",
+          "type": "button",
+          "content": "VIEW DEMO",
+          "link": "/demo",
+          "icon": "ArrowForward", 
+          "style": {
+            "color": "#FFFFFF",
+            "fontSize": "1rem",
+            "backgroundColor": "transparent",
+            "fontWeight": "bold",
+            "width": "auto",
+            "marginTop": "-50vh",
+            "marginLeft":"-9vw",
+            "zIndex": 1,
+            "textAlign": "center",
+            "display": "inline-block"
+          }
+        }
+      ],
+      "style": {
+        "container": {
+          "position": "relative",
+          "display": "flex",
+          "flexDirection": "column",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "height": "100vh",
+          "width": "100%",
+          "padding": "5vh 3vw",
+          "textAlign": "center",
+          "zIndex": 1
+        },
+        "overlay": {
+          "background": "rgba(0, 128, 0, 0.4)",  // ✅ Semi-transparent green overlay
+          "position": "absolute",
+          "top": 0,
+          "left": 0,
+          "width": "100%",
+          "height": "100%",
+          "zIndex": 0
+        }
+      }
+    }
+  },
+  
           
           
           // Third ObjectCarousel: With arrows distant from each other and dots centered
@@ -388,6 +411,8 @@ function KaustDigitalTwin() {
                           alignItems: "center",
                           justifyContent: "space-between",
                           margin: "0 auto",
+                          marginBottom:"10vh",
+                         
                       },
                       imageContainer: {
                           display: "flex",
@@ -398,11 +423,13 @@ function KaustDigitalTwin() {
                           maxWidth: "60vw",
                           maxHeight: "50vh",
                           overflow: "hidden",
+                          "borderRadius": "50%", 
+                        
                       },
   
                       imageStyle: {
-                          width: "100%", // Ensures the image fills the container
-                          height: "100%", // Maintains aspect ratio
+                          width: "50vw", // Ensures the image fills the container
+                          height: "50vw", // Maintains aspect ratio
                           objectFit: "contain", // Ensures the full image is visible without cropping
                           display: "block",
                       },
@@ -431,7 +458,7 @@ function KaustDigitalTwin() {
                       },
                       dotContainerStyle: {
                           position: "absolute",
-                          bottom: "20px",
+                          bottom: "20vh",
                           left: "50%",
                           transform: "translateX(-50%)",
                           display: "flex",
@@ -452,17 +479,17 @@ function KaustDigitalTwin() {
             props: {
                 media: {
                     type: "image",
-                    src: "/Media/Images/CityPlanning.jpg", // Update with the correct path
+                    src: "/Media/Images/CityPlanning.jpg", 
                     alt: "City Planning with Gaming Engines",
-                    style: {
-                        background: "rgba(113, 31, 31, 0.7)", 
-                        height: "50vh",
-                        width: "100%",
+                    style: {                     
                         objectFit: "cover",
                         position: "absolute",
-                        top: 0,
+                        marginTop: "21vh",
+                        width:"100vw",
+                        height:"80vh",
                         left: 0,
-                        zIndex: -1,
+                        bottom:0,
+                        zIndex: -2,
                     },
                 },
                 texts: [
@@ -471,11 +498,13 @@ function KaustDigitalTwin() {
                         type: "paragraph",
                         content: "USING GAMING ENGINES IN CITY PLANNING",
                         style: {
-                            fontSize: "2.5rem",
+                            fontSize: "2rem",
                             fontWeight: "bold",
                             textAlign: "center",
                             color: "#ffffff",
                             marginBottom: "1vh",
+                            marginLeft:"22vw",
+                            marginTop:"20vh",
                         },
                     },
                     {
@@ -488,12 +517,14 @@ function KaustDigitalTwin() {
                             textAlign: "center",
                             color: "#B0B0B0",
                             marginBottom: "3vh",
+                            marginLeft:"22vw",
+                            marginTop:"0vh",
                         },
                     },
                     {
                         section: "main",
                         type: "button",
-                        content: "BLOG POSTS →",
+                        content: "BLOG →",
                         link: "/blog",
                         style: {
                             fontSize: "1rem",
@@ -501,35 +532,24 @@ function KaustDigitalTwin() {
                             color: "#ffffff",
                             textTransform: "uppercase",
                             textDecoration: "none",
-                            borderBottom: "1px solid #ffffff",
+                            marginLeft:"22vw",
                             paddingBottom: "2px",
                             transition: "opacity 0.3s ease-in-out",
                             textAlign: "center",
                             display: "inline-block",
+                            
                         },
                     },
                 ],
-                style: {
-                    container: {
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "80vh",
-                        width: "100%",
-                        padding: "5vh 3vw",
-                        textAlign: "center",
-                        zIndex: 1,
-                    },
-                    overlay: {
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        background: "rgba(0, 0, 0, 0.5)", // Dark overlay for better contrast
-                        zIndex: 0,
+                "style": {
+                    "gradientOverlay": {
+                      "height": "100%",
+                      "width": "100%",
+                      "zIndex": 0,
+                      "background": "linear-gradient(to bottom, rgba(4,37,22,1), transparent 90%), linear-gradient(to top, rgba(4,37,22,1), transparent 90%)",
+                      "position": "absolute",
+                        "top": 0,
+                      "left": 0     
                     },
                 },
             },

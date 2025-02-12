@@ -12,7 +12,7 @@ import AnimatedSlides from "./Animations/AnimatedSlides/AnimatedSlides";
 // Pages
 import Home from "./Pages/HomePage/Home";
 
-import KaustDigitalTwin from "./Pages/kawstDigitalTwin/KawstDigitalTwin";
+import KaustDigitalTwin from "./Pages/kaustDigitalTwin/KaustDigitalTwin";
 
 
 const App = () => {

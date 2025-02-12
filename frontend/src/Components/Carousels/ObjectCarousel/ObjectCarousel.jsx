@@ -12,58 +12,46 @@ export default function ObjectCarousel({
     customStyles = {},
     arrowLeft = "/Media/Icons/LeftArrow.png",
     arrowRight = "/Media/Icons/RightArrow.png",
-    arrowLeftPosition = "10%", // Default position for left arrow
-    arrowRightPosition = "10%", // Default position for right arrow
+    arrowLeftPosition = "10%",
+    arrowRightPosition = "10%",
 }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isFading, setIsFading] = useState(false);
     const isTransitioning = useRef(false);
     const transitionDuration = 500;
     const containerRef = useRef(null);
 
-    const nextSlide = useCallback(() => {
+    const changeSlide = useCallback((direction) => {
         if (!isTransitioning.current && items.length > 1) {
             isTransitioning.current = true;
-            setCurrentIndex((prev) => (prev + 1) % items.length);
-            setTimeout(() => (isTransitioning.current = false), transitionDuration);
-        }
-    }, [items.length]);
+            setIsFading(true);
 
-    const prevSlide = useCallback(() => {
-        if (!isTransitioning.current && items.length > 1) {
-            isTransitioning.current = true;
-            setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
-            setTimeout(() => (isTransitioning.current = false), transitionDuration);
+            setTimeout(() => {
+                setCurrentIndex((prev) => (prev + direction + items.length) % items.length);
+                setIsFading(false);
+                isTransitioning.current = false;
+            }, transitionDuration);
         }
     }, [items.length]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
-            if (e.key === "ArrowRight") nextSlide();
-            if (e.key === "ArrowLeft") prevSlide();
+            if (e.key === "ArrowRight") changeSlide(1);
+            if (e.key === "ArrowLeft") changeSlide(-1);
         };
 
         window.addEventListener("keydown", handleKeyDown);
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [nextSlide, prevSlide]);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [changeSlide]);
 
     if (!items?.length) return <p>No items available</p>;
 
-    const getLayoutStyles = () => {
-        switch (textPosition) {
-            case "left":
-                return { flexDirection: "row-reverse" };
-            case "right":
-                return { flexDirection: "row" };
-            case "top":
-                return { flexDirection: "column-reverse" };
-            case "bottom":
-                return { flexDirection: "column" };
-            default:
-                return { flexDirection: "row" };
-        }
-    };
+    const getLayoutStyles = () => ({
+        flexDirection: textPosition === "left" ? "row-reverse" :
+                        textPosition === "top" ? "column-reverse" :
+                        textPosition === "bottom" ? "column" :
+                        "row"
+    });
 
     return (
         <div style={{ ...defaultStyles.carouselContainer, ...customStyles.carouselContainer }} ref={containerRef}>
@@ -71,57 +59,40 @@ export default function ObjectCarousel({
                 {/* Left Arrow */}
                 {withArrows && items.length > 1 && (
                     <button
-                        onClick={prevSlide}
+                        onClick={() => changeSlide(-1)}
                         aria-label="Previous slide"
                         style={{
                             ...defaultStyles.leftArrowStyle,
                             ...customStyles.leftArrowStyle,
-                            left: arrowLeftPosition, // Fixed left position
+                            left: arrowLeftPosition,
                         }}
                     >
-                        <img
-                            src={arrowLeft}
-                            alt="Previous"
-                            style={{
-                                ...defaultStyles.iconStyle,
-                                ...customStyles.iconStyle,
-                                border: "none",
-                                outline: "none",
-                            }}
-                        />
+                        <img src={arrowLeft} alt="Previous" style={{ ...defaultStyles.iconStyle, ...customStyles.iconStyle }} />
                     </button>
                 )}
 
-                <div
-                    style={{
-                        ...defaultStyles.slideContainer,
-                        ...customStyles.slideContainer,
-                        ...getLayoutStyles(),
-                    }}
-                    onClick={!withArrows && items.length > 1 ? nextSlide : undefined}
-                >
-                    {/* Detect if the item is an image URL or a React component */}
-                    <div style={{ ...defaultStyles.imageContainer, ...customStyles.imageContainer }}>
+                {/* Slide Content */}
+                <div style={{ ...defaultStyles.slideContainer, ...customStyles.slideContainer, ...getLayoutStyles() }}>
+                    <div
+                        style={{
+                            ...defaultStyles.imageContainer,
+                            ...customStyles.imageContainer,
+                            opacity: isFading ? 0 : 1,
+                            transform: isFading ? "scale(0.95)" : "scale(1)",
+                            transition: "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+                            cursor: withArrows ? "default" : "pointer", // Enable pointer cursor if arrows are disabled
+                        }}
+                        onClick={() => !withArrows && changeSlide(1)} // Click to change slide if arrows are disabled
+                    >
                         {typeof items[currentIndex] === "string" ? (
                             <img
                                 src={items[currentIndex]}
                                 alt={`Slide ${currentIndex + 1}`}
-                                style={{
-                                    ...defaultStyles.imageStyle,
-                                    ...customStyles.imageStyle,
-                                }}
+                                style={{ ...defaultStyles.imageStyle, ...customStyles.imageStyle }}
                                 draggable="false"
                             />
                         ) : (
-                            <div
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}
-                            >
+                            <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 {items[currentIndex]}
                             </div>
                         )}
@@ -129,16 +100,17 @@ export default function ObjectCarousel({
 
                     {/* Text Content */}
                     {textItems[currentIndex] && (
-                        <div style={{ ...defaultStyles.textContainer, ...customStyles.textContainer }}>
-                            <h2 style={{ ...defaultStyles.titleStyle, ...customStyles.titleStyle }}>
-                                {textItems[currentIndex]}
-                            </h2>
-                            <p
-                                style={{
-                                    ...defaultStyles.descriptionStyle,
-                                    ...customStyles.descriptionStyle,
-                                }}
-                            >
+                        <div
+                            style={{
+                                ...defaultStyles.textContainer,
+                                ...customStyles.textContainer,
+                                opacity: isFading ? 0 : 1,
+                                transform: isFading ? "translateY(20px)" : "translateY(0)",
+                                transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+                            }}
+                        >
+                            <h2 style={{ ...defaultStyles.titleStyle, ...customStyles.titleStyle }}>{textItems[currentIndex]}</h2>
+                            <p style={{ ...defaultStyles.descriptionStyle, ...customStyles.descriptionStyle }}>
                                 {descriptions[currentIndex] || ""}
                             </p>
                         </div>
@@ -148,24 +120,15 @@ export default function ObjectCarousel({
                 {/* Right Arrow */}
                 {withArrows && items.length > 1 && (
                     <button
-                        onClick={nextSlide}
+                        onClick={() => changeSlide(1)}
                         aria-label="Next slide"
                         style={{
                             ...defaultStyles.rightArrowStyle,
                             ...customStyles.rightArrowStyle,
-                            right: arrowRightPosition, // Fixed right position
+                            right: arrowRightPosition,
                         }}
                     >
-                        <img
-                            src={arrowRight}
-                            alt="Next"
-                            style={{
-                                ...defaultStyles.iconStyle,
-                                ...customStyles.iconStyle,
-                                border: "none",
-                                outline: "none",
-                            }}
-                        />
+                        <img src={arrowRight} alt="Next" style={{ ...defaultStyles.iconStyle, ...customStyles.iconStyle }} />
                     </button>
                 )}
             </div>
@@ -182,6 +145,8 @@ export default function ObjectCarousel({
                                 ...defaultStyles.dotStyle,
                                 ...customStyles.dotStyle,
                                 background: currentIndex === index ? "#fff" : "rgba(255,255,255,0.5)",
+                                transform: currentIndex === index ? "scale(1.2)" : "scale(1)",
+                                transition: "background 0.3s ease, transform 0.3s ease",
                             }}
                         />
                     ))}
@@ -200,7 +165,7 @@ const defaultStyles = {
         justifyContent: "center",
         alignItems: "center",
         padding: "5vh 5vw",
-        boxSizing:"border-box",
+        boxSizing: "border-box",
     },
     carouselWrapper: {
         display: "flex",
@@ -240,15 +205,12 @@ const defaultStyles = {
         marginTop: "1vh",
         lineHeight: "1.6",
     },
-
     iconStyle: {
         width: "40px",
         height: "40px",
-        opacity: 1,
-        transition: "opacity 0.3s ease",
+        opacity: 0.8,
+        transition: "opacity 0.3s ease-in-out",
     },
-
-    // Separate arrow styles
     leftArrowStyle: {
         position: "absolute",
         top: "50%",
@@ -257,9 +219,7 @@ const defaultStyles = {
         border: "none",
         cursor: "pointer",
         zIndex: 2,
-       
     },
-
     rightArrowStyle: {
         position: "absolute",
         top: "50%",
@@ -269,11 +229,10 @@ const defaultStyles = {
         cursor: "pointer",
         zIndex: 2,
     },
-
     dotContainerStyle: {
         position: "absolute",
         bottom: "20px",
-        left: "20%",
+        left: "50%",
         transform: "translateX(-50%)",
         display: "flex",
         gap: "8px",
@@ -285,21 +244,6 @@ const defaultStyles = {
         borderRadius: "50%",
         border: "none",
         cursor: "pointer",
-        transition: "background 0.3s ease",
+        transition: "background 0.3s ease, transform 0.3s ease",
     },
-};
-
-ObjectCarousel.propTypes = {
-    items: PropTypes.array.isRequired,
-    textItems: PropTypes.array,
-    descriptions: PropTypes.array,
-    links: PropTypes.array,
-    withArrows: PropTypes.bool,
-    withDots: PropTypes.bool,
-    textPosition: PropTypes.oneOf(["left", "right", "top", "bottom"]),
-    customStyles: PropTypes.object,
-    arrowLeft: PropTypes.string,
-    arrowRight: PropTypes.string,
-    arrowLeftPosition: PropTypes.string,
-    arrowRightPosition: PropTypes.string,
 };

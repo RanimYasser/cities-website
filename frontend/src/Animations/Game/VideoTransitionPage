@@ -1,0 +1,101 @@
+import React, { useState, useRef, useEffect } from "react";
+
+const VideoTransitionPage = () => {
+  const [view, setView] = useState("default"); // 'default', 'human', 'bird'
+  const [playingTransition, setPlayingTransition] = useState(false);
+  const videoRef = useRef(null);
+  const stableVideoRef = useRef(null);
+  const [panOffset, setPanOffset] = useState(0);
+
+  // Video sources
+  const videos = {
+    default: "/videos/default.mp4",
+    human: "/videos/human_view.mp4",
+    bird: "/videos/bird_view.mp4",
+    transitionToBird: "/videos/human_to_bird.mp4",
+    transitionToHuman: "/videos/bird_to_human.mp4",
+  };
+
+  // Handles view selection and plays transition video
+  const handleViewChange = (newView) => {
+    if (view === newView || playingTransition) return;
+
+    setPlayingTransition(true);
+
+    const transitionVideo = view === "human" && newView === "bird"
+      ? "transitionToBird"
+      : view === "bird" && newView === "human"
+      ? "transitionToHuman"
+      : null;
+
+    if (transitionVideo) {
+      videoRef.current.src = videos[transitionVideo];
+      videoRef.current.play();
+      videoRef.current.onended = () => {
+        setView(newView);
+        setPlayingTransition(false);
+        stableVideoRef.current.src = videos[newView]; // Load stable video
+        stableVideoRef.current.play();
+      };
+    } else {
+      setView(newView);
+      setPlayingTransition(false);
+    }
+  };
+
+  // Handles panorama effect by adjusting video seek time
+  const handlePanorama = (direction) => {
+    if (stableVideoRef.current) {
+      const step = 0.5; // Adjust pan speed
+      stableVideoRef.current.currentTime = Math.max(
+        0,
+        Math.min(stableVideoRef.current.duration, stableVideoRef.current.currentTime + step * direction)
+      );
+      setPanOffset((prev) => prev + step * direction);
+    }
+  };
+
+  return (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>Video Experience</h1>
+
+      {/* Video Player */}
+      <video
+        ref={videoRef}
+        src={videos.default}
+        width="80%"
+        style={{ display: playingTransition ? "block" : "none" }}
+        controls={!playingTransition}
+      />
+
+      {/* Stable View Video (Only shown after transition) */}
+      <video
+        ref={stableVideoRef}
+        src={videos.default}
+        width="80%"
+        style={{ display: playingTransition ? "none" : "block" }}
+        controls
+      />
+
+      {/* View Selection Buttons */}
+      <div style={{ marginTop: "20px" }}>
+        <button onClick={() => handleViewChange("human")} disabled={view === "human" || playingTransition}>
+          Human View
+        </button>
+        <button onClick={() => handleViewChange("bird")} disabled={view === "bird" || playingTransition}>
+          Bird View
+        </button>
+      </div>
+
+      {/* Panorama Controls */}
+      {view !== "default" && !playingTransition && (
+        <div style={{ marginTop: "20px" }}>
+          <button onClick={() => handlePanorama(-1)}>◀ Move Left</button>
+          <button onClick={() => handlePanorama(1)}>Move Right ▶</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default VideoTransitionPage;
